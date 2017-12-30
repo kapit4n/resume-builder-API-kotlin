@@ -5,8 +5,8 @@
 * API to build resumes
 
 ### How do I get set up? ###
-
- ./gradlew bootRun
+* sudo ./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
+* ./gradlew bootRun
 
 ### Contribution guidelines ###
 
