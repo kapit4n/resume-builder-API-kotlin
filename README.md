@@ -6,7 +6,7 @@
 
 ### How do I get set up? ###
 
-gradle run
+ ./gradlew bootRun
 
 ### Contribution guidelines ###
 
