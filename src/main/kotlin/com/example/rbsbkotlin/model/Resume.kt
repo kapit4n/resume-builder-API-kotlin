@@ -6,11 +6,12 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
+@Entity
 data class Resume (
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	val id: Long,
+	val id: Long = 0,
 	@get: NotBlank
-	val title: String,
+	val title: String = "",
 	@get: NotBlank
-	val summary: String
+	val summary: String = ""
 )
