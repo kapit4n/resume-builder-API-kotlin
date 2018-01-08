@@ -3,9 +3,9 @@
 ### What is this repository for? ###
 
 * API to build resumes
-* GET http://localhost:8080/resumes
-* POST http://localhost:8080/resumes
-* GET http://localhost:8080/resumes/:id
+* GET http://localhost:8080/api/resumes
+* POST http://localhost:8080/api/resumes
+* GET http://localhost:8080/api/resumes/1
 
 ### How do I get set up? ###
 * sudo ./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
