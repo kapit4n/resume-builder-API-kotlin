@@ -21,17 +21,20 @@ class ResumeController(private val resumeRepository: ResumeRepository) {
             Resume("Hello, $name", "Resume")
 	*/
 
-    @GetMapping("/resume")
+    @GetMapping("/resumes")
     fun getAllResumes(): List<Resume> =
             resumeRepository.findAll()
     
-    /*
-    @RequestMapping("/resume/{resumeId}")
+    
+    @RequestMapping("/resumes/{resumeId}")
     fun getResumeById(@PathVariable("resumeId") resumeId: Long): ResponseEntity<Resume> {
         return resumeRepository.findById(resumeId).map { resume -> 
             ResponseEntity.ok(resume)
         }.orElse(ResponseEntity.notFound().build())
     }
-    */
+
+    @PostMapping("/resumes")
+    fun createNewResume(@Valid @RequestBody resume: Resume): Resume =
+        resumeRepository.save(resume)
 
 }
