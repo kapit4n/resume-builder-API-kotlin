@@ -37,4 +37,27 @@ class ResumeController(private val resumeRepository: ResumeRepository) {
     fun createNewResume(@Valid @RequestBody resume: Resume): Resume =
         resumeRepository.save(resume)
 
+    @PutMapping("/resumes/{id}")
+    fun updateResumeById(@PathVariable(value = "id") resumeId: Long,
+                          @Valid @RequestBody newResume: Resume): ResponseEntity<Resume> {
+
+        return resumeRepository.findById(resumeId).map { existingResume ->
+            val updatedResume: Resume = existingResume
+                    .copy(title = newResume.title, summary = newResume.summary)
+
+            ResponseEntity.ok().body(resumeRepository.save(updatedResume))
+        }.orElse(ResponseEntity.notFound().build())
+
+    }
+
+    @DeleteMapping("/resumes/{id}")
+    fun deleteResumeById(@PathVariable(value = "id") resumeId: Long): ResponseEntity<Void> {
+
+        return resumeRepository.findById(resumeId).map { resume  ->
+            resumeRepository.delete(resume)
+            ResponseEntity<Void>(HttpStatus.OK)
+        }.orElse(ResponseEntity.notFound().build())
+
+    }
+
 }
